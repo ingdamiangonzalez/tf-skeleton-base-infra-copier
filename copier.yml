@@ -9,34 +9,34 @@ _min_copier_version: '8.0.0'
 
 vpc_enable:
   type: bool
-  help: Enable VPC
+  help: Habilitamos el módulo VPC?
   default: true
 
 vpc_name:
   type: str
-  help: Name of the vpc
+  help: Que nombre le colocamos a la VPC?
 
 vpc_cidr:
   type: str
-  help: CIDR of the VPC
+  help: Cuál es el CIDR de la VPC?
   default: 10.0.0.0/16
 
 availability_zones:
   type: str
-  help: Availability zones to use
+  help: Qué availability zones queremos usar?
   default: ["us-east-1a","us-east-1b","us-east-1c"]
 
 private_subnets:
   type: str
-  help: Private subnets to create
+  help: Cuáles son las subnets privadas?
   default: ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 
 public_subnets:
   type: str
-  help: Public subnets to create
+  help: Cuáles son las subnets públicas?
   default: ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]  
 
 aws_region:
   type: str
-  help: AWS region
+  help: En qué región queremos crear la VPC?
   default: us-east-1
