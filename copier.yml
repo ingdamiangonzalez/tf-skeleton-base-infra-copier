@@ -16,8 +16,6 @@ use_default_values:
   help: Usar valores por defecto?
   default: true
 
-[% if use_default_values == 'false' %]
-
 vpc_cidr:
   type: str
   help: Cuál es el CIDR de la VPC?
@@ -63,5 +61,3 @@ vpc_enable_logs_endpoint:
   type: bool
   help: Queremos activar CloudWatch Logs Endpoints?
   default: false
-
-[% endif %]
