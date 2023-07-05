@@ -8,8 +8,6 @@ terraform {
     }
   }
 }
-{% if vpc_enable %}
 provider "aws" {
   region = "{{aws_region}}"
 }
-{% endif %}

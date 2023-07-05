@@ -9,7 +9,7 @@ _min_copier_version: '8.0.0'
 
 project_name:
   type: str
-  help: Nombre del proyecto
+  help: Cuál es el nombre del proyecto?
 
 use_default_values:
   type: bool

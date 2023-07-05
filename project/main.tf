@@ -1,6 +1,5 @@
-{% if vpc_enable %}
-########## VPC module ##########
-module "vpc" {
+########## Base infra module ##########
+module "base" {
   source          = "git::https://github.com/ingdamiangonzalez/startup-base-infrastructure-module.git?ref=0.1.2"
   aws_region = var.aws_region
   ecs_container_insights = var.ecs_container_insights
@@ -13,5 +12,4 @@ module "vpc" {
   vpc_private_subnets = var.vpc_private_subnets
   vpc_public_subnets = var.vpc_public_subnets
 }
-########## /VPC module ##########
-{% endif %}
+########## /Base infra module ##########
