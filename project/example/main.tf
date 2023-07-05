@@ -1,9 +1,15 @@
 module "vpc" {
-  source          = "../"
-  vpc_name        = var.vpc_name
-  vpc_cidr        = var.vpc_cidr
-  azs             = var.azs
-  private_subnets = var.private_subnets # ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets  = var.public_subnets  # ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+  source      = "../"
+  aws_region    = var.aws_region
+  ecs_container_insights = var.ecs_container_insights
+  environment = var.environment
+  one_nat_gateway_per_az = var.one_nat_gateway_per_az
+  project_name = var.project_name
+  vpc_cidr = var.vpc_cidr
+  vpc_enable_ecr_endpoints = var.vpc_enable_ecr_endpoints
+  vpc_enable_logs_endpoint = var.vpc_enable_logs_endpoint
+  vpc_private_subnets = var.vpc_private_subnets
+  vpc_public_subnets = var.vpc_public_subnets
+
 }
 

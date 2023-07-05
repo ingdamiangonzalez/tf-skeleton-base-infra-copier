@@ -7,31 +7,34 @@ _min_copier_version: '8.0.0'
 
 # User Input
 
-vpc_enable:
+project_name:
+  type: str
+  help: Nombre del proyecto
+
+use_default_values:
   type: bool
-  help: Habilitamos el módulo VPC?
+  help: Usar valores por defecto?
   default: true
 
-vpc_name:
-  type: str
-  help: Que nombre le colocamos a la VPC?
+[% if use_default_values == 'false' %]
 
 vpc_cidr:
   type: str
   help: Cuál es el CIDR de la VPC?
   default: 10.0.0.0/16
 
+
 availability_zones:
   type: str
   help: Qué availability zones queremos usar?
   default: '["us-east-1a","us-east-1b","us-east-1c"]'
 
-private_subnets:
+vpc_private_subnets:
   type: str
   help: Cuáles son las subnets privadas?
   default: '["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]'
 
-public_subnets:
+vpc_public_subnets:
   type: str
   help: Cuáles son las subnets públicas?
   default: '["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]'
@@ -40,3 +43,25 @@ aws_region:
   type: str
   help: En qué región queremos crear la VPC?
   default: us-east-1
+
+one_nat_gateway_per_az:
+  type: bool
+  help: Queremos un NAT Gateway por AZ?
+  default: true
+
+ecs_container_insights:
+  type: bool
+  help: Queremos activar Container Insights?
+  default: false
+
+vpc_enable_ecr_endpoints: 
+  type: bool
+  help: Queremos activar ECR Endpoints?
+  default: false
+
+vpc_enable_logs_endpoint:
+  type: bool
+  help: Queremos activar CloudWatch Logs Endpoints?
+  default: false
+
+[% endif %]
