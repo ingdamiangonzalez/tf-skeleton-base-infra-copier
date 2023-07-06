@@ -9,9 +9,9 @@ locals {
 
 terraform {
   backend "s3" {
-    bucket = {{s3_backend_tf}}}
+    bucket = "{{s3_backend_tf}}"
     key    = "terraform.tfstate"
-    region = var.aws_region
+    region = "{{aws_region}}"
   }
 }
 
@@ -30,6 +30,13 @@ module "vpc" {
   single_nat_gateway = var.single_nat_gateway
 
   tags = local.tags
+  ## Tags
+  private_subnet_tags = {
+    Tier = "Private"
+  }
+  public_subnet_tags = {
+    Tier = "Public"
+  }
 }
 
 module "ecs_cluster" {

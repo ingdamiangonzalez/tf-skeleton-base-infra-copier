@@ -19,7 +19,6 @@ variable "environment" {
   type        = string
 }
 
-
 variable "cidr" {
   description = "VPC CIDR"
   type        = string

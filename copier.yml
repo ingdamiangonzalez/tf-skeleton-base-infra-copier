@@ -11,10 +11,10 @@ project_name:
   help: Cuál es el nombre del proyecto?
   default: "my-project"
 
-environment:
-  type: str
-  help: Cuál es el entorno?
-  default: "dev"
+# environment:
+#   type: str
+#   help: Cuál es el entorno?
+#   default: "dev"
 
 cidr:
   type: str
