@@ -1,15 +1,58 @@
-########## Base infra module ##########
-module "base" {
-  source          = "git::https://github.com/ingdamiangonzalez/startup-base-infrastructure-module.git?ref=0.1.2"
-  aws_region = var.aws_region
-  ecs_container_insights = var.ecs_container_insights
-  environment = var.environment
-  one_nat_gateway_per_az = var.one_nat_gateway_per_az
-  project_name = var.project_name
-  vpc_cidr = var.vpc_cidr
-  vpc_enable_ecr_endpoints = var.vpc_enable_ecr_endpoints
-  vpc_enable_logs_endpoint = var.vpc_enable_logs_endpoint
-  vpc_private_subnets = var.vpc_private_subnets
-  vpc_public_subnets = var.vpc_public_subnets
+locals {
+  common_name = lower("${var.project_name}-${var.environment}")
 }
-########## /Base infra module ##########
+
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = local.common_name
+  cidr = var.cidr
+
+  azs             = var.azs
+  private_subnets = var.private_subnets
+  public_subnets  = var.public_subnets
+
+  enable_nat_gateway = true
+  single_nat_gateway = var.single_nat_gateway
+
+  tags = {
+    Project   = var.project_name
+    Environment = var.environment
+    Terraform = "true"
+  }
+}
+
+
+module "ecs_cluster" {
+  source = "terraform-aws-modules/ecs/aws//modules/cluster"
+
+  cluster_name = local.common_name
+
+  cluster_configuration = {
+    execute_command_configuration = {
+      logging = "OVERRIDE"
+      log_configuration = {
+        cloud_watch_log_group_name = "/aws/ecs/ecs-cluster"
+      }
+    }
+  }
+
+  fargate_capacity_providers = {
+    FARGATE = {
+      default_capacity_provider_strategy = {
+        weight = 50
+      }
+    }
+    FARGATE_SPOT = {
+      default_capacity_provider_strategy = {
+        weight = 50
+      }
+    }
+  }
+
+  tags = {
+    Project   = var.project_name
+    Environment = var.environment
+    Terraform = "true"
+  }
+}

@@ -6,58 +6,44 @@ _skip_if_exists:
 _min_copier_version: '8.0.0'
 
 # User Input
-
 project_name:
   type: str
   help: Cuál es el nombre del proyecto?
+  default: my-project
 
-use_default_values:
-  type: bool
-  help: Usar valores por defecto?
-  default: true
+environment:
+  type: str
+  help: Cuál es el entorno?
+  default: dev
 
-vpc_cidr:
+cidr:
   type: str
   help: Cuál es el CIDR de la VPC?
   default: 10.0.0.0/16
 
-
-availability_zones:
+azs:
   type: str
   help: Qué availability zones queremos usar?
   default: '["us-east-1a","us-east-1b","us-east-1c"]'
 
-vpc_private_subnets:
+private_subnets:
   type: str
   help: Cuáles son las subnets privadas?
   default: '["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]'
 
-vpc_public_subnets:
+public_subnets:
   type: str
   help: Cuáles son las subnets públicas?
   default: '["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]'
+
+single_nat_gateway:
+  type: bool
+  help: Queremos un NAT Gateway por AZ?
+  default: true
 
 aws_region:
   type: str
   help: En qué región queremos crear la VPC?
   default: us-east-1
 
-one_nat_gateway_per_az:
-  type: bool
-  help: Queremos un NAT Gateway por AZ?
-  default: true
 
-ecs_container_insights:
-  type: bool
-  help: Queremos activar Container Insights?
-  default: false
-
-vpc_enable_ecr_endpoints: 
-  type: bool
-  help: Queremos activar ECR Endpoints?
-  default: false
-
-vpc_enable_logs_endpoint:
-  type: bool
-  help: Queremos activar CloudWatch Logs Endpoints?
-  default: false
