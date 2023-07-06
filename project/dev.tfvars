@@ -5,4 +5,4 @@ azs = {{azs}}
 private_subnets = {{private_subnets}}
 public_subnets = {{public_subnets}}
 single_nat_gateway = {{single_nat_gateway}}
-region = {{region}}
+region = {{aws_region}}

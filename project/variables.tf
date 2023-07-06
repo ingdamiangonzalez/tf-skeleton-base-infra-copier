@@ -40,8 +40,3 @@ variable "single_nat_gateway" {
   type        = bool
   default     = true
 }
-variable "region" {
-  description = "AWS region"
-  type        = string
-  default     = "us-east-1"
-}
