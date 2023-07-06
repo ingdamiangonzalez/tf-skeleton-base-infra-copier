@@ -1,5 +1,10 @@
 locals {
   common_name = lower("${var.project_name}-${var.environment}")
+  tags = {
+    Project   = var.project_name
+    Environment = var.environment
+    Terraform = "true"
+  }
 }
 
 module "vpc" {
@@ -15,13 +20,8 @@ module "vpc" {
   enable_nat_gateway = true
   single_nat_gateway = var.single_nat_gateway
 
-  tags = {
-    Project   = var.project_name
-    Environment = var.environment
-    Terraform = "true"
-  }
+  tags = local.tags
 }
-
 
 module "ecs_cluster" {
   source = "terraform-aws-modules/ecs/aws//modules/cluster"
@@ -50,9 +50,5 @@ module "ecs_cluster" {
     }
   }
 
-  tags = {
-    Project   = var.project_name
-    Environment = var.environment
-    Terraform = "true"
-  }
+  tags = local.tags
 }

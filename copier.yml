@@ -9,17 +9,17 @@ _min_copier_version: '8.0.0'
 project_name:
   type: str
   help: Cuál es el nombre del proyecto?
-  default: my-project
+  default: "my-project"
 
 environment:
   type: str
   help: Cuál es el entorno?
-  default: dev
+  default: "dev"
 
 cidr:
   type: str
   help: Cuál es el CIDR de la VPC?
-  default: 10.0.0.0/16
+  default: "10.0.0.0/16"
 
 azs:
   type: str
@@ -44,6 +44,6 @@ single_nat_gateway:
 aws_region:
   type: str
   help: En qué región queremos crear la VPC?
-  default: us-east-1
+  default: "us-east-1"
 
 
