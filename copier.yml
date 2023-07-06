@@ -46,4 +46,6 @@ aws_region:
   help: En qué región queremos crear la VPC?
   default: "us-east-1"
 
-
+s3_backend_tf:
+  type: str
+  help: En qué bucket de S3 queremos guardar el estado de Terraform?

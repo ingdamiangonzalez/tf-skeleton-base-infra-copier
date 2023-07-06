@@ -7,6 +7,15 @@ locals {
   }
 }
 
+terraform {
+  backend "s3" {
+    bucket = {{s3_backend_tf}}}
+    key    = "terraform.tfstate"
+    region = var.aws_region
+  }
+}
+
+
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
