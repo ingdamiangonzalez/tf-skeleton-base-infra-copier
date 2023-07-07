@@ -1,8 +1,9 @@
 locals {
-  common_name = lower("${var.project_name}-${var.environment}")
+  common_name = lower("${var.project_name}-${var.team}-${var.environment}")
   tags = {
     Project   = var.project_name
     Environment = var.environment
+    Team = var.team
     Terraform = "true"
   }
 }
@@ -46,12 +47,12 @@ module "ecs_cluster" {
   fargate_capacity_providers = {
     FARGATE = {
       default_capacity_provider_strategy = {
-        weight = 50
+        weight = 80
       }
     }
     FARGATE_SPOT = {
       default_capacity_provider_strategy = {
-        weight = 50
+        weight = 20
       }
     }
   }

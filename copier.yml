@@ -9,12 +9,11 @@ _min_copier_version: '8.0.0'
 project_name:
   type: str
   help: Cuál es el nombre del proyecto?
-  default: "my-project"
 
-# environment:
-#   type: str
-#   help: Cuál es el entorno?
-#   default: "dev"
+team:
+  type: str
+  help: Cuál es el nombre del equipo?
+
 
 cidr:
   type: str
@@ -37,9 +36,9 @@ public_subnets:
   default: '["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]'
 
 single_nat_gateway:
-  type: bool
-  help: Queremos un NAT Gateway por AZ?
-  default: true
+    type: bool
+    help: Queremos un NAT Gateway por AZ ?
+    default: true
 
 aws_region:
   type: str
