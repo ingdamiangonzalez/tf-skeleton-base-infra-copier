@@ -10,10 +10,7 @@ locals {
 
 terraform {
   backend "s3" {
-    bucket = "{{s3_backend_tf}}"
-    key    = "terraform.tfstate"
-    region = "{{aws_region}}"
-  }
+ }
 }
 
 
